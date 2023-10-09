@@ -48,7 +48,13 @@ Widget _buildBody() {
         SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: _weatherDescription(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                _weatherDescription(),
+                _temperature(),
+              ],
+            ),
           ),
         ),
       ],
@@ -64,8 +70,7 @@ Image _headerImage() {
   );
 }
 
-//TODO: Create dynamic weather description, temperature, and location
-
+//TODO: Create dynamic weather description
 Column _weatherDescription() {
   return const Column(
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,7 +83,7 @@ Column _weatherDescription() {
           color: Colors.black,
         ),
       ),
-      //Розділитель між текстом
+      //Separator between text
       Divider(),
       Text(
         "In the mountains, at the heart of gorpcore style, our team embarked on a mountain biking race in fair weather, dressed in reliable mountain jackets and retro baseball caps, ready for incredible adventures.",
@@ -87,6 +92,55 @@ Column _weatherDescription() {
           fontWeight: FontWeight.w300,
           color: Colors.blueGrey,
         ),
+      ),
+      Divider(
+        height: 40.0,
+        color: Colors.black,
+      ),
+    ],
+  );
+}
+
+//TODO: Create dynamic weather, temperature, and location
+
+Row _temperature() {
+  return const Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Icon(
+            Icons.wb_sunny,
+            color: Colors.yellow,
+            size: 40,
+          ),
+        ],
+      ),
+      SizedBox(
+        width: 16.0,
+      ),
+      Column(
+        children: <Widget>[
+          Text(
+            '15 °Clear',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w200,
+            ),
+          ),
+        ],
+      ),
+      Column(
+        children: <Widget>[
+          Text(
+            '   Krym, Ukraine',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ],
       ),
     ],
   );
