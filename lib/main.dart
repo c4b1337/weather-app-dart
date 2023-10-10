@@ -53,6 +53,14 @@ Widget _buildBody() {
               children: <Widget>[
                 _weatherDescription(),
                 _temperature(),
+                const Divider(
+                  color: Colors.black,
+                ),
+                _temperatureForecast(),
+                const Divider(
+                  color: Colors.black,
+                ),
+                _fotterRatings(),
               ],
             ),
           ),
@@ -142,6 +150,57 @@ Row _temperature() {
           ),
         ],
       ),
+    ],
+  );
+}
+
+Wrap _temperatureForecast() {
+  return Wrap(
+    spacing: 13.0,
+    children: List.generate(
+      9,
+      (index) {
+        return Chip(
+            label: Text(
+              '${index + 20} °C',
+              style: const TextStyle(fontSize: 15),
+            ),
+            avatar: Icon(
+              Icons.wb_cloudy,
+              color: Colors.blue[900],
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              side: const BorderSide(color: Colors.grey),
+            ));
+      },
+    ),
+  );
+}
+
+Row _fotterRatings() {
+  var stars = const Row(
+    mainAxisSize: MainAxisSize.min,
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: <Widget>[
+      Icon(Icons.star, size: 30.0, color: Colors.yellow),
+      Icon(Icons.star, size: 30.0, color: Colors.yellow),
+      Icon(Icons.star, size: 30.0, color: Colors.grey),
+      Icon(Icons.star, size: 30.0, color: Colors.grey),
+      Icon(Icons.star, size: 30.0, color: Colors.grey),
+    ],
+  );
+  return Row(
+    children: <Widget>[
+      Text(
+        'Rate this page',
+        style: TextStyle(
+          fontSize: 20,
+          color: Colors.grey[700],
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      stars,
     ],
   );
 }
